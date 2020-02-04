@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="stream_adder.h" path="/home/otenim/Dev/stream_adder/hls/stream_adder/stream_adder.h"/>
+    <originFiles name="stream_adder.cpp" path="/home/otenim/Dev/stream_adder/hls/stream_adder/stream_adder.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="test.cpp" path="/home/otenim/Dev/stream_adder/hls/stream_adder/test.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
