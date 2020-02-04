@@ -2,3 +2,8 @@
 *.app
 *.jou
 solution*/
+.apc/
+.settings/
+.cproject/
+.project/
+*.xml/
