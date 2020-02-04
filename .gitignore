@@ -4,6 +4,6 @@
 solution*/
 .apc/
 .settings/
-.cproject/
-.project/
-*.xml/
+.cproject
+.project
+*.xml
