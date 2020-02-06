@@ -16,7 +16,7 @@ void create_istream(istream* input, ap_uint<DATALEN> data) {
 }
 
 int main(int argc, char** argv) {
-	ap_uint<DATALEN> data;
+	ap_uint<DATALEN> data, mult;
 	ap_uint<DATALEN/2> a, b;
 	istream input;
 	ostream output;
@@ -24,9 +24,10 @@ int main(int argc, char** argv) {
 	for (int i = 0; i < N; i++) {
 		a = rand() % MAXIMUM; // 0 ~ (MAXIMUM - 1)
 		b = rand() % MAXIMUM;
+		mult = rand() % MAXIMUM;
 		data = (a, b);
 		create_istream(&input, data);
-		stream_adder(&input, &output);
+		stream_adder(&input, &output, mult);
 		printf("[%d]:\n", i);
 		printf("\t a = %s(%s)\n",
 				a.to_string(16).c_str(),
@@ -34,9 +35,11 @@ int main(int argc, char** argv) {
 		printf("\t b = %s(%s)\n",
 				b.to_string(16).c_str(),
 				b.to_string(10).c_str());
-		printf("\t [input] data = %s(%s)\n",
-				data.to_string(16).c_str(),
-				data.to_string(10).c_str());
+		printf("\t mult = %s(%s)\n",
+				mult.to_string(16).c_str(),
+				mult.to_string(10).c_str());
+		printf("\t [input] data = %s\n",
+				data.to_string(16).c_str());
 		printf("\t [output] data = %s(%s)\n",
 				output.data.to_string(16).c_str(),
 				output.data.to_string(10).c_str());
