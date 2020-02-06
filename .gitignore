@@ -1,6 +1,7 @@
 *.log
 *.app
 *.jou
+*.str
 solution*/
 .apc/
 .settings/
