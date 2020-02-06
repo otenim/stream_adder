@@ -6,4 +6,6 @@ solution*/
 .settings/
 .cproject
 .project
+.Xil/
 *.xml
+NA/
