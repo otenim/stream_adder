@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Feb  6 18:58:07 2020" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Feb 12 22:44:13 2020" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -4589,12 +4589,12 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="dma" PORT="s_axi_lite_aclk"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M01_ACLK"/>
-            <CONNECTION INSTANCE="stream_adder" PORT="ap_clk"/>
             <CONNECTION INSTANCE="dma" PORT="m_axi_mm2s_aclk"/>
             <CONNECTION INSTANCE="axi_interconnect_1" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="dma" PORT="m_axi_s2mm_aclk"/>
             <CONNECTION INSTANCE="axi_interconnect_1" PORT="S01_ACLK"/>
             <CONNECTION INSTANCE="axi_interconnect_1" PORT="ACLK"/>
+            <CONNECTION INSTANCE="stream_adder" PORT="ap_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
@@ -4971,16 +4971,16 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="dma" PORT="axi_resetn"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M01_ARESETN"/>
-            <CONNECTION INSTANCE="stream_adder" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="axi_interconnect_1" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="axi_interconnect_1" PORT="S01_ARESETN"/>
             <CONNECTION INSTANCE="axi_interconnect_1" PORT="ARESETN"/>
+            <CONNECTION INSTANCE="stream_adder" PORT="ap_rst_n"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2002061841" FULLNAME="/stream_adder" HWVERSION="1.0" INSTANCE="stream_adder" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="stream_adder" VLNV="xilinx.com:hls:stream_adder:1.0">
+    <MODULE COREREVISION="2002122239" FULLNAME="/stream_adder" HWVERSION="1.0" INSTANCE="stream_adder" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="stream_adder" VLNV="xilinx.com:hls:stream_adder:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="read-write" INTERFACE="s_axi_AXILiteS" NAME="Reg" RANGE="65536" USAGE="register">
@@ -5031,7 +5031,7 @@
       <PARAMETERS>
         <PARAMETER NAME="C_S_AXI_AXILITES_ADDR_WIDTH" VALUE="5"/>
         <PARAMETER NAME="C_S_AXI_AXILITES_DATA_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_stream_adder_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_stream_adder_0_1"/>
         <PARAMETER NAME="clk_period" VALUE="10"/>
         <PARAMETER NAME="machine" VALUE="64"/>
         <PARAMETER NAME="combinational" VALUE="0"/>
