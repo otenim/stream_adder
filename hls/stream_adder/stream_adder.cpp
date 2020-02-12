@@ -4,7 +4,7 @@
 void stream_adder(istream* input, ostream* output, ap_uint<DATALEN> mult) {
 #pragma HLS interface axis port=input
 #pragma HLS interface axis port=output
-#pragma HLS interface s_axilite register port=mult
+#pragma HLS interface s_axilite port=mult
 #pragma HLS interface ap_ctrl_none port=return
 
 	ap_uint<DATALEN> a, b;
