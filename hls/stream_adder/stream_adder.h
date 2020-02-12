@@ -12,5 +12,5 @@
 typedef ap_axiu<DATALEN, USERLEN, IDLEN, DESTLEN> istream;
 typedef ap_axiu<DATALEN, USERLEN, IDLEN, DESTLEN> ostream;
 
-void stream_adder(istream* input, ostream* output, ap_uint<DATALEN> mult);
+void stream_adder(istream* input, ostream* output, ap_uint<DATALEN/2> mult);
 #endif

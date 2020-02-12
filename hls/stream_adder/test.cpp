@@ -16,8 +16,8 @@ void create_istream(istream* input, ap_uint<DATALEN> data) {
 }
 
 int main(int argc, char** argv) {
-	ap_uint<DATALEN> data, mult;
-	ap_uint<DATALEN/2> a, b;
+	ap_uint<DATALEN> data;
+	ap_uint<DATALEN/2> a, b, mult;
 	istream input;
 	ostream output;
 
