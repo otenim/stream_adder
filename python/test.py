@@ -12,12 +12,13 @@ parser.add_argument('--b', type=int, default=8)
 def main(args):
     curdir = os.path.dirname(os.path.abspath(__file__))
     overlay = pynq.Overlay(os.path.join(curdir, 'hw', 'design.bit'))
-    mult = np.uint64(args.mult)
+    mult = np.uint32(args.mult)
     a = np.uint32(args.a)
     b = np.uint32(args.b)
 
     # change register value
-    overlay.stream_adder.register_map.mult = mult
+    overlay.stream_adder.register_map.mult_V_1 = mult
+    overlay.stream_adder.register_map.mult_V_2 = 0
 
     # create input
     data = np.uint64(0)
