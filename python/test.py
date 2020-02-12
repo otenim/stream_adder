@@ -22,7 +22,7 @@ def main(args):
     # create input
     data = np.uint64(0)
     data |= a
-    data <<= 32
+    data <<= np.uint64(32)
     data |= b
 
     # allocate buffer
