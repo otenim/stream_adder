@@ -17,8 +17,7 @@ def main(args):
     b = np.uint32(args.b)
 
     # change register value
-    overlay.stream_adder.register_map.mult_V_1 = mult
-    overlay.stream_adder.register_map.mult_V_2 = 0
+    overlay.stream_adder.register_map.mult_V = mult
 
     # create input
     data = np.uint64(0)
