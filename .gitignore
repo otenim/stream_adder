@@ -11,4 +11,5 @@ solution*/
 .Xil/
 *.xml
 .python-version
+sds_trace_data.dat
 NA/
