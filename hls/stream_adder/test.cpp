@@ -1,4 +1,4 @@
-#include "stream_adder.h"
+#include "stream_adder.hpp"
 #include <ap_int.h>
 #include <stdlib.h>
 #include <math.h>
@@ -7,27 +7,22 @@
 
 void create_istream(istream* input, ap_uint<DATALEN> data) {
 	input->data = data;
-	input->keep = 0;
-	input->strb = 0;
-	input->user = 0;
 	input->last = 0;
-	input->id = 0;
-	input->dest = 0;
 }
 
 int main(int argc, char** argv) {
 	ap_uint<DATALEN> data;
-	ap_uint<DATALEN/2> a, b, mult;
+	ap_uint<DATALEN/2> a, b, reg;
 	istream input;
 	ostream output;
 
 	for (int i = 0; i < N; i++) {
 		a = rand() % MAXIMUM; // 0 ~ (MAXIMUM - 1)
 		b = rand() % MAXIMUM;
-		mult = rand() % MAXIMUM;
+		reg = rand() % MAXIMUM;
 		data = (a, b);
 		create_istream(&input, data);
-		stream_adder(&input, &output, mult);
+		stream_adder(&input, &output, reg);
 		printf("[%d]:\n", i);
 		printf("\t a = %s(%s)\n",
 				a.to_string(16).c_str(),
@@ -35,9 +30,9 @@ int main(int argc, char** argv) {
 		printf("\t b = %s(%s)\n",
 				b.to_string(16).c_str(),
 				b.to_string(10).c_str());
-		printf("\t mult = %s(%s)\n",
-				mult.to_string(16).c_str(),
-				mult.to_string(10).c_str());
+		printf("\t reg = %s(%s)\n",
+				reg.to_string(16).c_str(),
+				reg.to_string(10).c_str());
 		printf("\t [input] data = %s\n",
 				data.to_string(16).c_str());
 		printf("\t [output] data = %s(%s)\n",

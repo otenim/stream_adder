@@ -1,6 +1,6 @@
 open_project stream_adder
 set_top stream_adder
-add_files stream_adder/stream_adder.h
+add_files stream_adder/stream_adder.hpp
 add_files stream_adder/stream_adder.cpp
 add_files -tb stream_adder/test.cpp -cflags "-Wno-unknown-pragmas"
 open_solution "solution1"

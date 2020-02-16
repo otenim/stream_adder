@@ -1,10 +1,10 @@
-#include "stream_adder.h"
+#include "stream_adder.hpp"
 #include <ap_int.h>
 
-void stream_adder(istream* input, ostream* output, ap_uint<DATALEN/2> mult) {
+void stream_adder(istream* input, ostream* output, ap_uint<DATALEN/2> reg) {
 #pragma HLS interface axis port=input
 #pragma HLS interface axis port=output
-#pragma HLS interface s_axilite register port=mult
+#pragma HLS interface s_axilite register port=reg
 #pragma HLS interface ap_ctrl_none port=return
 
 	ap_uint<DATALEN/2> a, b;
@@ -14,11 +14,6 @@ void stream_adder(istream* input, ostream* output, ap_uint<DATALEN/2> mult) {
 	b = input->data.range(DATALEN / 2 - 1, 0);
 
 	// create output
-	output->data = (a + b) * mult;
-	output->keep = input->keep;
-	output->strb = input->strb;
-	output->user = input->user;
+	output->data = (a + b) * reg;
 	output->last = input->last;
-	output->id = input->id;
-	output->dest = input->dest;
 }
