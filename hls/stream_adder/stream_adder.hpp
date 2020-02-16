@@ -1,5 +1,5 @@
-#ifndef __STREAM_ADDER_H__
-#define __STREAM_ADDER_H__
+#ifndef __STREAM_ADDER_HPP__
+#define __STREAM_ADDER_HPP__
 
 #include <ap_int.h>
 
