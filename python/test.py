@@ -2,8 +2,8 @@ import os
 import pynq
 import numpy as np
 
-REG = 10
-N = 20
+REG = 5
+N = 10
 
 
 def main():
@@ -11,10 +11,11 @@ def main():
     overlay = pynq.Overlay(os.path.join(curdir, 'hw', 'design.bit'))
 
     # read register value
-    print(overlay.stream_adder.register_map.reg_V)
+    print('reg (before):', overlay.stream_adder.register_map.reg_V)
 
     # write register value
     overlay.stream_adder.register_map.reg_V = REG
+    print('reg (after):', overlay.stream_adder.register_map.reg_V)
 
     # allocate input and output buffers in DRAM
     ibuff = pynq.allocate(shape=(N,), dtype=np.uint64)
