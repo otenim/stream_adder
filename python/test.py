@@ -1,46 +1,45 @@
 import os
-import argparse
 import pynq
 import numpy as np
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--reg', type=int, default=2)
-parser.add_argument('--a', type=int, default=4)
-parser.add_argument('--b', type=int, default=8)
+REG = 10
+N = 20
 
 
-def main(args):
+def main():
     curdir = os.path.dirname(os.path.abspath(__file__))
     overlay = pynq.Overlay(os.path.join(curdir, 'hw', 'design.bit'))
-    reg = np.uint32(args.reg)
-    a = np.uint32(args.a)
-    b = np.uint32(args.b)
 
-    # change register value
-    overlay.stream_adder.register_map.reg_V = reg
+    # read register value
+    print(overlay.stream_adder.register_map.reg_V)
 
-    # create input
-    data = np.uint64(0)
-    data |= a
-    data <<= np.uint64(32)
-    data |= b
+    # write register value
+    overlay.stream_adder.register_map.reg_V = REG
 
-    # allocate buffer
-    ibuff = pynq.allocate(shape=(1,), dtype=np.uint64)
-    obuff = pynq.allocate(shape=(1,), dtype=np.uint64)
-    ibuff[0] = data
+    # allocate input and output buffers in DRAM
+    ibuff = pynq.allocate(shape=(N,), dtype=np.uint64)
+    obuff = pynq.allocate(shape=(N,), dtype=np.uint64)
+
+    # create input stream data
+    for i in range(N):
+        data = np.uint64(0)
+        data |= i  # upper 32 bits
+        data <<= np.uint64(32)  # left shift by 32 bits
+        data |= i  # lower 32 bits
+        ibuff[i] = data
 
     # run dma
-    overlay.dma.sendchannel.transfer(ibuff)
-    overlay.dma.recvchannel.transfer(obuff)
-    overlay.dma.sendchannel.wait()
-    overlay.dma.recvchannel.wait()
+    overlay.dma.sendchannel.transfer(ibuff)  # send input stream data
+    overlay.dma.sendchannel.wait()  # wait until it finishes
+    overlay.dma.recvchannel.transfer(obuff)  # receive output stream data
+    overlay.dma.recvchannel.wait()  # wait until it finishes
 
     # show result
-    print('input: a = {}, b = {}, reg = {}'.format(a, b, reg))
-    print('output: {}'.format(obuff[0]))
+    for i in range(N):
+        print('upper 32 bits: {}, lower 32 bits: {}, reg: {}'.format(
+            i, i, REG))
+        print('output: {}'.format(obuff[i]))
 
 
 if __name__ == '__main__':
-    args = parser.parse_args()
-    main(args)
+    main()
