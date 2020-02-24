@@ -4,7 +4,7 @@ import pynq
 import numpy as np
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--mult', type=int, default=2)
+parser.add_argument('--reg', type=int, default=2)
 parser.add_argument('--a', type=int, default=4)
 parser.add_argument('--b', type=int, default=8)
 
@@ -12,12 +12,12 @@ parser.add_argument('--b', type=int, default=8)
 def main(args):
     curdir = os.path.dirname(os.path.abspath(__file__))
     overlay = pynq.Overlay(os.path.join(curdir, 'hw', 'design.bit'))
-    mult = np.uint32(args.mult)
+    reg = np.uint32(args.reg)
     a = np.uint32(args.a)
     b = np.uint32(args.b)
 
     # change register value
-    overlay.stream_adder.register_map.mult_V = mult
+    overlay.stream_adder.register_map.reg_V = reg
 
     # create input
     data = np.uint64(0)
@@ -37,7 +37,7 @@ def main(args):
     overlay.dma.recvchannel.wait()
 
     # show result
-    print('input: a = {}, b = {}, mult = {}'.format(a, b, mult))
+    print('input: a = {}, b = {}, reg = {}'.format(a, b, reg))
     print('output: {}'.format(obuff[0]))
 
 
