@@ -23,9 +23,9 @@ def main():
     # create input stream data
     for i in range(N):
         data = np.uint64(0)
-        data |= i  # upper 32 bits
+        data |= np.uint32(i)  # upper 32 bits
         data <<= np.uint64(32)  # left shift by 32 bits
-        data |= i  # lower 32 bits
+        data |= np.uint32(i)  # lower 32 bits
         ibuff[i] = data
 
     # run dma
