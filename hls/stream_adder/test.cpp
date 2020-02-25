@@ -14,8 +14,8 @@ int main(int argc, char** argv) {
 	ostream output;
 
 	for (int i = 0; i < N; i++) {
-		a = i;
-		b = i;
+		a = i; // upper 32-bit field
+		b = i; // lower 32-bit field
 
 		// create input
 		input.data = (a, b); // concatination
